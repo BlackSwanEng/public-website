@@ -8,7 +8,7 @@ import ProductPage from "./pages/ProductPage";
 import ProjectPage from "./pages/ProjectPage";
 
 
-
+import { Toaster } from "./ui/components/ui/sonner";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -24,6 +24,7 @@ function App() {
             <Route path="/products/:id" element={<ProductPage/>}/>
         </Routes>
         <Footer/>
+        <Toaster />
     </Router>
   );
 }

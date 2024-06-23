@@ -12,7 +12,6 @@ const Header = () => {
 
   const navLinkStyles = ({ isActive }) => {
     return {
-      fontWeight: isActive ? 'bold' : 'normal',
       color: isActive ? '#e4335a' : '#1F2937',
       borderRadius: isActive ? '0.25rem' : '0',
       padding: '5px 15px',
@@ -20,7 +19,7 @@ const Header = () => {
   };
 
   return (
-    <nav className="py-4 sticky top-0 backdrop-blur-md">
+    <nav className="py-4 sticky top-0 backdrop-blur-md bg-[#ffffffa8] border-b border-border">
       <div className="container mx-auto px-4 md:px-0">
         <div className="flex justify-between items-center">
           <div className="text-2xl font-bold">Black Swan</div>
@@ -60,7 +59,7 @@ const Header = () => {
         </div>
       </div>
       {isOpen && (
-        <div className="absolute left-0 top-16 w-full bg-orange-300 p-4 shadow-lg md:hidden">
+        <div className="absolute left-0 top-15 backdrop-blur-md bg-white w-full p-4 shadow-lg md:hidden  ">
           {MENU_ITEMS.map((item) => (
             <NavLink key={item.name} to={item.link} className="block text-gray-800 hover:text-gray-600 py-2" style={navLinkStyles({isActive: true})}>
               {item.name}

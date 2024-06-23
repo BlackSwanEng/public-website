@@ -7,13 +7,14 @@ import ContactUs from "./pages/ContactUs";
 import ProductPage from "./pages/ProductPage";
 import ProjectPage from "./pages/ProjectPage";
 
-
+import ScrollToTop from "./components/ScrollToTop";
 import { Toaster } from "./ui/components/ui/sonner";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <Router>
+      <ScrollToTop/>
         <Header/>
         <Routes>
             <Route path="/" element={<Home/>}/>

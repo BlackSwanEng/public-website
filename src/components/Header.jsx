@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
-import { MENU_ITEMS } from '../components/constants';
+import React, { useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
+import { MENU_ITEMS } from "../components/constants";
+import logo from "@/assets/logo.png";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,20 +10,25 @@ const Header = () => {
     setIsOpen(!isOpen);
   };
 
-
   const navLinkStyles = ({ isActive }) => {
     return {
-      color: isActive ? '#e4335a' : '#1F2937',
-      borderRadius: isActive ? '0.25rem' : '0',
-      padding: '5px 15px',
+      color: isActive ? "#e4335a" : "#1F2937",
+      borderRadius: isActive ? "0.25rem" : "0",
+      padding: "5px 15px",
     };
   };
 
   return (
-    <nav className="py-4 sticky top-0 backdrop-blur-md bg-[#ffffffa8] border-b border-border">
+    <nav className="py-2 sticky top-0 backdrop-blur-md bg-[#ffffffa8] border-b border-border z-30">
       <div className="container mx-auto px-4 md:px-0">
         <div className="flex justify-between items-center">
-          <div className="text-2xl font-bold">Black Swan</div>
+          <div className=" flex items-center">
+            <img src={logo} alt="logo" height={70} width={70} />
+            <div >
+              <div className="text-2xl font-bold text-center">Black Swan</div>
+              <p className=" text-xs border-t-[#e4335a] border-t-2 p-1 tracking-[6px]">Engineering</p>
+            </div>
+          </div>
           <div className="md:hidden">
             <button
               className="text-gray-800 hover:text-gray-600 focus:outline-none"
@@ -50,7 +56,14 @@ const Header = () => {
           <div className="hidden md:flex md:items-center md:w-auto w-full">
             <div className="md:flex md:space-x-4">
               {MENU_ITEMS.map((item) => (
-                <NavLink key={item.name} to={item.link} className="block md:inline-block md:mr-4 text-gray-800 hover:text-gray-600" style={navLinkStyles({isActive: location.pathname === item.link})}>
+                <NavLink
+                  key={item.name}
+                  to={item.link}
+                  className="block md:inline-block md:mr-4 text-gray-800 hover:text-gray-600"
+                  style={navLinkStyles({
+                    isActive: location.pathname === item.link,
+                  })}
+                >
                   {item.name}
                 </NavLink>
               ))}
@@ -61,7 +74,12 @@ const Header = () => {
       {isOpen && (
         <div className="absolute left-0 top-15 backdrop-blur-md bg-white w-full p-4 shadow-lg md:hidden  ">
           {MENU_ITEMS.map((item) => (
-            <NavLink key={item.name} to={item.link} className="block text-gray-800 hover:text-gray-600 py-2" style={navLinkStyles({isActive: true})}>
+            <NavLink
+              key={item.name}
+              to={item.link}
+              className="block text-gray-800 hover:text-gray-600 py-2"
+              style={navLinkStyles({ isActive: true })}
+            >
               {item.name}
             </NavLink>
           ))}

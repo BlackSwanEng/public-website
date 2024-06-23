@@ -35,7 +35,7 @@ const Products = () => {
 
 
   return (
-    <section className="container mx-auto px-4 md:px-6 pb-12 pt-3 h-[100vh]">
+    <section className="container mx-auto px-4 md:px-6 pb-12 pt-3 h-max">
       <div className={` h-60 mb-5 text-white flex flex-col-reverse p-2 shadow-md rounded-md`} style={{background:colors.primary}}>
         <p className=" w-[80%] text-sm mt-3  text-muted-background">
           Discover our diverse range of precision-engineered products tailored

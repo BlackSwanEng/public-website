@@ -11,6 +11,11 @@ import ScrollToTop from "./components/ScrollToTop";
 import { Toaster } from "./ui/components/ui/sonner";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+const ExternalRedirect = () => {
+  window.location.href = 'https://blackswan.sanity.studio/';
+  return null;
+};
+
 function App() {
   return (
     <Router>
@@ -23,6 +28,7 @@ function App() {
             <Route path="/contact-us" element={<ContactUs/>}/>
             <Route path="/project/:id" element={<ProjectPage/>}/>
             <Route path="/products/:id" element={<ProductPage/>}/>
+            <Route path='/admin' element={<ExternalRedirect />}/>
         </Routes>
         <Footer/>
         <Toaster />

@@ -61,7 +61,7 @@ const Home = () => {
         <div className="absolute inset-0 bg-black/50 z-10" />
         <div className="relative z-20 container h-full flex flex-col items-start justify-center text-white space-y-6">
           <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
-            BlackSwan Engineering
+            Black Swan Engineering
           </h1>
           <h2>{homeData?.heroSection?.headline}</h2>
           <p className="text-xl md:text-2xl max-w-3xl">
@@ -152,7 +152,7 @@ const Home = () => {
           <div className="flex flex-col items-center justify-center space-y-4">
             <h2 className="text-3xl md:text-4xl font-bold">Our Process</h2>
             <p className="text-muted-foreground max-w-md">
-              At BlackSwan Engineering, we follow a meticulous process to ensure
+              At Black Swan Engineering, we follow a meticulous process to ensure
               the highest quality and customer satisfaction.
             </p>
             <ul className="space-y-2 text-muted-foreground">

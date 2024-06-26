@@ -12,26 +12,26 @@ import { Toaster } from "./ui/components/ui/sonner";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const ExternalRedirect = () => {
-  window.location.href = 'https://blackswan.sanity.studio/';
+  window.location.href = "https://blackswan.sanity.studio/";
   return null;
 };
 
 function App() {
   return (
     <Router>
-      <ScrollToTop/>
-        <Header/>
-        <Routes>
-            <Route path="/" element={<Home/>}/>
-            <Route path="/products" element={<Products/>}/>
-            <Route path="/about-us" element={<AboutUs/>}/>
-            <Route path="/contact-us" element={<ContactUs/>}/>
-            <Route path="/project/:id" element={<ProjectPage/>}/>
-            <Route path="/products/:id" element={<ProductPage/>}/>
-            <Route path='/admin' element={<ExternalRedirect />}/>
-        </Routes>
-        <Footer/>
-        <Toaster />
+      <ScrollToTop />
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/about-us" element={<AboutUs />} />
+        <Route path="/contact-us" element={<ContactUs />} />
+        <Route path="/project/:id" element={<ProjectPage />} />
+        <Route path="/products/:id" element={<ProductPage />} />
+        <Route path="/admin" element={<ExternalRedirect />} />
+      </Routes>
+      <Footer />
+      <Toaster />
     </Router>
   );
 }

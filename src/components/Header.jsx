@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { MENU_ITEMS } from "../components/constants";
 import logo from "@/assets/logo.png";
+import LogoText from "@/assets/LogoGroup.png";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -22,12 +23,9 @@ const Header = () => {
     <nav className="py-2 sticky top-0 backdrop-blur-md bg-[#ffffffa8] border-b border-border z-30">
       <div className="container mx-auto px-4 md:px-0">
         <div className="flex justify-between items-center">
-          <div className=" flex items-center">
+          <div className=" flex items-center ">
             <img src={logo} alt="logo" height={70} width={70} />
-            <div >
-              <div className="text-2xl font-bold text-center">Black Swan</div>
-              <p className=" text-xs border-t-[#e4335a] border-t-2 p-1 tracking-[6px]">Engineering</p>
-            </div>
+            <img src={LogoText} alt="logo" height={10} width={150} />
           </div>
           <div className="md:hidden">
             <button

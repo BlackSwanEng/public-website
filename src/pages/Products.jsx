@@ -4,6 +4,7 @@ import sanityClient from "@/sanityClient";
 import { toast } from "sonner";
 import { colors } from "@/constants";
 import { Badge } from "@/ui/components/ui/badge";
+import placeholderImage from "@/assets/placeholder.svg"; 
 
 const Products = () => {
   const [products, setProducts] = useState([]);
@@ -17,7 +18,7 @@ const Products = () => {
       'image': image.asset->url,
       title,
       price,
-      category,
+      category->{title},
       "gallery": gallery[].asset->url
     }`;
       const products = await sanityClient.fetch(query);
@@ -35,7 +36,7 @@ const Products = () => {
 
 
   return (
-    <section className="container mx-auto px-4 md:px-6 pb-12 pt-3 h-max">
+    <section className="container mx-auto px-4 md:px-6 pb-12 pt-3 h-screen">
       <div className={` h-60 mb-5 text-white flex flex-col-reverse p-2 shadow-md rounded-md`} style={{background:colors.primary}}>
         <p className=" w-[80%] text-sm mt-3  text-muted-background">
           Discover our diverse range of precision-engineered products tailored
@@ -53,7 +54,7 @@ const Products = () => {
           >
             <NavLink to={"/products/" + product._id} className="block" state={product}>
               <img
-                src={product.image || require('@/assets/placeholder.svg')}
+                src={product.image || placeholderImage}
                 alt={product.title}
                 width={400}
                 height={300}
@@ -61,7 +62,7 @@ const Products = () => {
               />
               <div className="p-4">
                 <h3 className="text-lg font-semibold mb-1">{product.title}</h3>
-                <Badge>{product.category}</Badge>
+                <Badge>{product.category?.title}</Badge>
                 <p className=" line-clamp-3 w-full text-xs mt-2">
                   {product.description}
                 </p>

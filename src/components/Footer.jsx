@@ -30,7 +30,7 @@ const Footer = () => {
         <div className="container flex flex-col items-center justify-between md:flex-row">
           <div className="flex items-center space-x-4">
             <NavLink to="/" >
-              <img src={logo} alt="" srcset="" width={60} height={60} />
+              <img src={logo} alt="" width={60} height={60} />
               <span className="sr-only">BlackSwan Engineering</span>
             </NavLink>
             <div className="flex items-center space-x-4">

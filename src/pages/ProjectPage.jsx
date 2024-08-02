@@ -13,9 +13,9 @@ const ProjectPage = () => {
   const { id: projectId } = useParams();
 
   const fetchProduct = async (projectId) => {
-    const query = `*[_type == "about"][0].projectsCompleted[_key == $projectId][0]{
-  projectType,
-    truckType,
+    const query = `*[_type == "project" && _id == $projectId][0]{
+    projectType->{title},
+    truckType->{title},
     description,
     title,
     image,
@@ -43,7 +43,7 @@ const ProjectPage = () => {
   }, []);
 
   return (
-    <section className="container mx-auto px-4 md:px-6 pb-12 pt-3 h-max">
+    <section className="container mx-auto px-4 md:px-6 pb-12 pt-3 h-screen">
       <div
         className={` h-60 mb-5 text-white flex flex-col-reverse p-2 shadow-md rounded-md`}
         style={{ background: colors.primary }}
@@ -52,14 +52,14 @@ const ProjectPage = () => {
       </div>
       <div className=" space-y-5">
         <div className=" flex space-x-3">
-          <Badge>{product.projectType}</Badge>
-          <Badge>{product.truckType}</Badge>
+          <Badge>{product.projectType?.title}</Badge>
+          <Badge>{product.truckType?.title}</Badge>
         </div>
         <p>{product.description}</p>
         <h3>Gallery</h3>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {product.gallery &&
+          {product.gallery?.length > 0 ? (product.gallery &&
             product.gallery.map((image, index) => (
               <img
                 key={index}
@@ -67,7 +67,8 @@ const ProjectPage = () => {
                 alt={`${product.title} - Image ${index + 1}`}
                 className="w-full h-48 object-cover rounded-md shadow-md"
               />
-            ))}
+            ))):
+            <p>No images found</p>}
         </div>
       </div>
     </section>

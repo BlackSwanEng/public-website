@@ -4,6 +4,7 @@ import { toast } from "sonner";
 import { NavLink } from "react-router-dom";
 import { Badge } from "@/ui/components/ui/badge";
 import client from "@/sanityClient";
+import placeholderImage from "@/assets/placeholder.svg"; 
 
 const AboutUs = () => {
   const [about, setAbout] = useState();
@@ -12,7 +13,8 @@ const AboutUs = () => {
     try {
       const query = `*[_type == "about"][0]{
   businessDescription,
-  projectsCompleted[]{
+  "projectsCompleted": projectsCompleted[]->{
+    _id,
     title,
     description,
     'image':image.asset->url,
@@ -20,8 +22,8 @@ const AboutUs = () => {
     containerSize,
     clientDeliveryDate,
     _key,
-    projectType,
-    truckType,
+    projectType->{title},
+    truckType->{title},
     "gallery": gallery[].asset->url
   },
   mission,
@@ -59,16 +61,16 @@ const AboutUs = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {about?.projectsCompleted.map((project) => (
           <div
-            key={project._key}
+            key={project._id}
             className="bg-background rounded-lg overflow-hidden shadow-lg transition-all hover:shadow-xl"
           >
             <NavLink
-              to={"/project/" + project._key}
+              to={"/project/" + project._id}
               className="block"
               state={project}
             >
               <img
-                src={project.image || require("@/assets/placeholder.svg")}
+                src={project.image || placeholderImage}
                 alt={project.title}
                 width={400}
                 height={300}
@@ -76,7 +78,7 @@ const AboutUs = () => {
               />
               <div className="p-4">
                 <h3 className="text-lg font-semibold mb-1">{project.title}</h3>
-                <Badge>{project.projectType}</Badge>
+                <Badge>{project.projectType.title}</Badge>
                 <p className=" line-clamp-3 w-full text-xs mt-2">
                   {project.description}
                 </p>
